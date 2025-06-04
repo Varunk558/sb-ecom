@@ -4,7 +4,7 @@ import com.ecommerce.project.payload.CategoryDto;
 import com.ecommerce.project.payload.CategoryResponse;
 
 public interface CategoryService {
-    CategoryResponse getAllCategories();
+    CategoryResponse getAllCategories(Integer pageNumber, Integer pageSize);
 
     CategoryDto createCategory(CategoryDto categoryDto);
 
