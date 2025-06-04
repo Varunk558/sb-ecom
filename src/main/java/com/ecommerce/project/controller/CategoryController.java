@@ -23,7 +23,7 @@ public class CategoryController {
     @RequestMapping(value = "public/categories", method = RequestMethod.GET)
     public ResponseEntity<CategoryResponse> getCategories(){
         CategoryResponse categoryResponse = categoryService.getAllCategories();
-        return new ResponseEntity(categoryResponse, HttpStatus.OK);
+        return new ResponseEntity<>(categoryResponse, HttpStatus.OK);
     }
 
     @PostMapping("/public/categories")
@@ -33,10 +33,10 @@ public class CategoryController {
     }
 
     @DeleteMapping("/admin/categories/{categoryId}")
-    public ResponseEntity<String> deleteCategory(@PathVariable Long categoryId){
+    public ResponseEntity<CategoryDto> deleteCategory(@PathVariable Long categoryId){
 
-            String status = categoryService.deleteCategory(categoryId);
-            return new ResponseEntity<>(status, HttpStatus.OK);
+            CategoryDto deletedCategory = categoryService.deleteCategory(categoryId);
+            return new ResponseEntity<>(deletedCategory, HttpStatus.OK);
     }
 
     @PutMapping("/public/categories/{categoryId}")
